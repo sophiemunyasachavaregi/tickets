@@ -145,6 +145,12 @@ function CheckoutInner() {
 
   return (
     <div className="checkout-page">
+      <nav className="navbar">
+        <div className="navbar-flag">🇵🇭</div>
+        <Link href="/" className="navbar-brand">BTS ARIRANG PRESALE</Link>
+        <div className="navbar-powered">Powered by <strong>Ticketmaster.ph</strong></div>
+      </nav>
+
       <div className="checkout-header">
         <div className="checkout-header-inner">
           <div className="checkout-breadcrumb">

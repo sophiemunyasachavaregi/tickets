@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase'
 
 type InventoryMap = Record<string, Record<string, { total: number; sold: number }>>
 
@@ -38,32 +38,10 @@ function availText(avail: number, total: number) {
   return { text: `${avail} available`, cls: 'ok' }
 }
 
-type InventoryRow = {
-  event_date: string
-  ticket_category: string
-  total_quantity: number
-  sold_quantity: number
-}
-
-export default function HomeClient() {
+export default function HomeClient({ inventory }: { inventory: InventoryMap }) {
   const router = useRouter()
-  const [inventory, setInventory] = useState<InventoryMap>({})
   const [selectedDate, setSelectedDate] = useState('')
   const [selectedTicket, setSelectedTicket] = useState<string | null>(null)
-
-  useEffect(() => {
-    supabase.from('ticket_inventory').select('*').then(({ data }) => {
-      const map: InventoryMap = {}
-      ;((data as InventoryRow[]) ?? []).forEach(row => {
-        if (!map[row.event_date]) map[row.event_date] = {}
-        map[row.event_date][row.ticket_category] = {
-          total: row.total_quantity,
-          sold: row.sold_quantity,
-        }
-      })
-      setInventory(map)
-    })
-  }, [])
 
   function getDateStatus(date: string) {
     const cats = inventory[date]
@@ -97,14 +75,29 @@ export default function HomeClient() {
 
   return (
     <>
+      {/* NAVBAR */}
+      <nav className="navbar">
+        <div className="navbar-flag" aria-label="Philippines flag">🇵🇭</div>
+        <div className="navbar-brand">BTS ARIRANG PRESALE</div>
+        <div className="navbar-powered">
+          Powered by <strong>Ticketmaster.ph</strong>
+        </div>
+        <div className="navbar-partners">
+          <span>Also via</span>
+          Live Nation &bull; SMTickets
+        </div>
+      </nav>
+
       {/* HERO */}
       <section className="hero">
         <div className="hero-img-wrap">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/image.png"
             alt="BTS WORLD TOUR ARIRANG — Bulacan, Philippine Sports Stadium"
-            style={{ width: '100%', height: 'auto', maxWidth: 1400, display: 'block' }}
+            width={1400}
+            height={560}
+            priority
+            style={{ width: '100%', height: 'auto', maxWidth: 1400 }}
           />
         </div>
         <div className="hero-info-bar">

@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import Navbar from './components/Navbar'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: "BTS WORLD TOUR 'ARIRANG' | Ticket Presale — Ticketmaster Philippines",
+  title: "BTS WORLD TOUR 'ARIRANG' | Ticket Presale",
   description: 'Official presale partner for BTS WORLD TOUR ARIRANG in Bulacan, Philippine Sports Stadium. Powered by Ticketmaster.ph.',
 }
 
@@ -16,10 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body>
-        <Navbar />
-        <div className="page-offset">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

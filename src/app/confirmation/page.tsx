@@ -39,6 +39,12 @@ function ConfirmationInner() {
 
   return (
     <>
+      <nav className="navbar">
+        <div className="navbar-flag">🇵🇭</div>
+        <Link href="/" className="navbar-brand">BTS ARIRANG PRESALE</Link>
+        <div className="navbar-powered">Powered by <strong>Ticketmaster.ph</strong></div>
+      </nav>
+
       <div className="confirm-page">
         <div className="confirm-card">
           <div className="confirm-top">
