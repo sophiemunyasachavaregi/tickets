@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -18,13 +17,8 @@ export default function Navbar() {
         <div className="tm-topbar-inner">
           <div className="tm-topbar-left">
             <button className="tm-loc-btn" onClick={() => setLocOpen(v => !v)}>
-              <Image
-                src="/images/navbar/image.png"
-                alt="PH flag"
-                width={20}
-                height={14}
-                style={{ borderRadius: 2 }}
-              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/navbar/image.png" alt="PH flag" width={20} height={14} style={{ borderRadius: 2 }} />
               <span>PH</span>
             </button>
             <button className="tm-loc-btn">
@@ -52,7 +46,8 @@ export default function Navbar() {
                 <span>Location</span>
               </div>
               <p className="tm-loc-current">
-                <Image src="/images/navbar/image.png" alt="PH" width={20} height={14} style={{ borderRadius: 2, marginRight: 6 }} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/navbar/image.png" alt="PH" width={20} height={14} style={{ borderRadius: 2, marginRight: 6 }} />
                 Philippines — English
               </p>
             </div>
@@ -85,14 +80,8 @@ export default function Navbar() {
             </Link>
             {/* SM Tickets partner logo */}
             <div className="tm-partner-divider" />
-            <Image
-              src="/images/navbar/image copy copy.png"
-              alt="SM Tickets"
-              width={72}
-              height={28}
-              className="tm-partner-logo"
-              style={{ objectFit: 'contain' }}
-            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/navbar/image copy copy.png" alt="SM Tickets" width={72} height={28} className="tm-partner-logo" style={{ objectFit: 'contain' }} />
           </div>
 
           {/* Nav links + search + account */}

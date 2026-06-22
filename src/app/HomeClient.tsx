@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 
@@ -101,13 +100,11 @@ export default function HomeClient() {
       {/* HERO */}
       <section className="hero">
         <div className="hero-img-wrap">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/image.png"
             alt="BTS WORLD TOUR ARIRANG — Bulacan, Philippine Sports Stadium"
-            width={1400}
-            height={560}
-            priority
-            style={{ width: '100%', height: 'auto', maxWidth: 1400 }}
+            style={{ width: '100%', height: 'auto', maxWidth: 1400, display: 'block' }}
           />
         </div>
         <div className="hero-info-bar">
